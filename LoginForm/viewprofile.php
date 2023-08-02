@@ -1,3 +1,20 @@
+<?php
+session_start();
+include 'connection.php';
+$code=$_SESSION['empid'];
+$query=mysqli_query($conn,"SELECT * FROM employee WHERE empid='$code'");
+?>
+
+
+
+
+
+
+
+
+
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -29,28 +46,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-light">
-        <li class="nav-item ">
-          <a class="ca nav-link " aria-current="page" href="#">Home</a>
-        </li>
+          
         <li class="nav-item">
-          <a class="ca nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="ca nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="ca dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="ca nav-link " aria-disabled="true" href="viewprofile.php">view Profile </a>
-        </li>
-        <li class="nav-item">
-          <a class="ca nav-link " aria-disabled="true" href="logout.php">logout </a>
+          <a class="ca nav-link " href="dashboard.php" aria-disabled="true">Back </a>
         </li>
       </ul>
       <form class="d-flex" role="search">
@@ -61,6 +59,71 @@
   </div>
 </nav>
     </div>
+
+    <div class="container">
+            <div class="col-4"></div>
+            <div class="col-4">
+            <?php while($data=mysqli_fetch_assoc($query))
+              {
+                ?>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                    <img src="./image/<?php echo $data['photo'];?>"  width="75"  height="75" class="img-round rounded-start" >
+                        
+                    <div class="form-group">
+                    <strong>name:</strong>
+                    <?php echo $data['name']; ?>
+                    </div>
+                    <div class="form-group">
+                    <strong>mobile Number:</strong>
+                    <?php echo $data['mobile']; ?>
+                    </div>
+                    <div class="form-group">
+                    <strong>email:</strong>
+                    <?php echo $data['email']; ?>
+                    </div>
+                    <div class="form-group">
+                    <a href="edit.php" class="btn btn-primary">Edit</a>
+                    
+                    </div>
+            
+                    </div>
+                  </div>
+                  <?php
+              }
+              ?>
+            </div>
+        </div>
+    </div>
+
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
   </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

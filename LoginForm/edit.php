@@ -1,7 +1,9 @@
 <?php
+session_start();
 include 'connection.php';
-$id =$_GET['empid'];
-$query=mysqli_query($conn,"SELECT * FROM employee WHERE empid='$id'");
+$code =$_SESSION['empid'];
+echo $code;
+$query=mysqli_query($conn,"SELECT * FROM employee WHERE empid='$code'");
 $data=mysqli_fetch_assoc($query);
 if(isset($_POST['update']))
 {
@@ -30,10 +32,10 @@ if(isset($_POST['update']))
         move_uploaded_file($tempname,$folder);
     }
     
-    $sql =mysqli_query($conn,"UPDATE employee SET name='$name', mobile='$mobile',email='$email',photo='$image' WHERE empid='$id'");
+    $sql =mysqli_query($conn,"UPDATE employee SET name='$name', mobile='$mobile',email='$email',photo='$image' WHERE empid='$code'");
     if($sql)
     {
-        echo'<script>alert("update successfully");window.location.href="read.php";</script>';
+        echo'<script>alert("update successfully");window.location.href="viewprofile.php";</script>';
     }
     else
     {

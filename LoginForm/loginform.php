@@ -1,17 +1,17 @@
 <?php 
-include 'connection.php';
 session_start();
+include 'connection.php';
 if(isset($_POST['submit']))
 {
     $username=$_POST['username'];
     $password=$_POST['password'];
-    $result=mysqli_query($conn,"SELECT * FROM employee WHERE username='$username'");
+    $result=mysqli_query($conn,"SELECT * FROM employee WHERE email='$username'");
     if($result)
     {
         $row =mysqli_fetch_assoc($result);
         $hash =password_verify($password,$row['password']);
         $count=mysqli_num_rows($result);
-        if($ount==1 && $hash)
+        if($count==1 && $hash)
         {
             $_SESSION['empid'] =$row['empid'];
             ?>
@@ -48,7 +48,7 @@ if(isset($_POST['submit']))
         <div class="row">
             <div class="col-4" ></div>
             <div class= "ha col-4" style="margin-top:100px;">
-            <form method="POST" class="bg-Info mt-5 text-light p-3">
+            <form method="POST" class="bg-info mt-5 text-light p-3">
                 <Center><h2 class ="text-Secondary">LOGIN</h2></Center>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email address</label>
@@ -60,7 +60,7 @@ if(isset($_POST['submit']))
     <input type="password" class="form-control" id="exampleInputPassword1" name="password">
   </div>
   
- <center><button type="submit" class="btn btn-Success " name="submit">Login</button></center> 
+ <center><button type="submit" class="btn btn-primary " name="submit">Login</button></center> 
 </form>
             </div>
 

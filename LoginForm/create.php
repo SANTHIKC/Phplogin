@@ -6,7 +6,7 @@ if(isset($_POST['submit']))
     $name =$_POST['name'];
     $mobile =$_POST['mobile'];
     $email =$_POST['email'];
-    $password =$_POST['password'];
+    $hash=password_hash($_POST['password'],PASSWORD_DEFAULT);
     $filename=$_FILES["photo"]["name"];
     $tempname=$_FILES["photo"]["tmp_name"];
     $folder = "./image/".$filename;
@@ -29,7 +29,7 @@ if(isset($_POST['submit']))
     }
     
 
-    $sql=mysqli_query($conn,"INSERT INTO employee(name,mobile,email,password,photo) VALUES('$name','$mobile','$email','$password','$image')");
+    $sql=mysqli_query($conn,"INSERT INTO employee(name,mobile,email,password,photo) VALUES('$name','$mobile','$email','$hash','$image')");
     if($sql)
     {
         echo'<script>alert("Registered Successfullty");window.location.href="loginform.php";</script>';
@@ -55,7 +55,7 @@ if(isset($_POST['submit']))
             <div class="col-4"></div>
             <div class="col-4">
             
-                <form method="post" class="bg-Primary p-3 mt-5 text-light" required enctype="multipart/form-data" >
+                <form method="post" class="bg-secondary p-3 mt-5 text-light" required enctype="multipart/form-data" >
               <center>  <h1>Employee Form</h1></center>
                     <label>Enter name</label>
                     <input type="text" name="name" class="form-control" placeholder="name" required>
