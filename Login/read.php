@@ -41,10 +41,10 @@ $query = mysqli_query($conn,"SELECT * FROM class");
                             <td><?php echo $row['email']; ?></td>
                             <td><?php echo $row['password']; ?></td>
                             <td><?php echo $row['dob']; ?></td>
-                            <td>
+                            <!-- <td>
                                 <img src="./image/<?php echo $row['photo'];?>"  width="75"  height="75" >
                             </td>
-                            
+                             -->
                         </tr>
                        <?php } ?>
                     </tbody>

@@ -8,26 +8,26 @@ if(isset($_POST['submit']))
     $email =$_POST['email'];
     $hash=password_hash($_POST['password'],PASSWORD_DEFAULT);
     $dob =$_POST['dob'];
-    $filename=$_FILES["photo"]["name"];
-    $tempname=$_FILES["photo"]["tmp_name"];
-    $folder = "./image/".$filename;
-    $image=$filename;
+    // $filename=$_FILES["photo"]["name"];
+    // $tempname=$_FILES["photo"]["tmp_name"];
+    // $folder = "./image/".$filename;
+    // $image=$filename;
 
-    $uploadOk=1;
-    $imageFileType=strtolower(pathinfo($folder,PATHINFO_EXTENSION));
-    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif")
-    {
-        echo "sorry, only JPG,JPEG,PNG & GIF files are allowded.";
-        $uploadOk =0;
-    }
-    if($uploadOk == 0)
-    {
-        echo "sorry";
-    }
-    else
-    {
-        move_uploaded_file($tempname,$folder);
-    }
+    // $uploadOk=1;
+    // $imageFileType=strtolower(pathinfo($folder,PATHINFO_EXTENSION));
+    // if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif")
+    // {
+    //     echo "sorry, only JPG,JPEG,PNG & GIF files are allowded.";
+    //     $uploadOk =0;
+    // }
+    // if($uploadOk == 0)
+    // {
+    //     echo "sorry";
+    // }
+    // else
+    // {
+    //     move_uploaded_file($tempname,$folder);
+    // }
 
     
 
@@ -69,8 +69,8 @@ if(isset($_POST['submit']))
                     <input type="password" name="password" class="form-control" placeholder="password" required>
                     <label>enterdob</label>
                     <input type="date" name="dob" class="form-control" placeholder="dob" required>
-                    <label >profile photo</label>
-                    <input type="file" name="photo" required>
+                    <!-- <label >profile photo</label>
+                    <input type="file" name="photo" required> -->
                     <div class="row">
                         <div class="col-4"></div>
                         <div class="col-4">
